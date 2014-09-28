@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pop-ups</title>
+	<style>
+	/* Первый вариант с использованием выравнивания при помощи translateY*/
+	.popup-wrapper-1 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		font-size: 15px;
+		display: none;
+		background-color: rgba(0,0,0,0.5);
+	}
+
+	.popup-1 {
+		width: 400px;
+		position: relative;
+		top: 50%;
+		margin: 0 auto;
+		transform: translateY(-50%);
+		border: 1px solid lightgreen;
+		background-color: white;
+	}
+
+	.popup_visible-1 {
+		display: block;
+	}
+
+	/* Второй вариант с использованием вертикального выравнивания flexbox */
+
+	.popup-wrapper-2 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		font-size: 15px;
+		display: none;
+		background-color: rgba(0,0,0,0.5);
+		align-items: center;
+		justify-content: center;
+	}
+
+	.popup-2 {
+		width: 400px;
+		border: 1px solid lightgreen;
+		background-color: white;
+	}
+
+	.popup_visible-2 {
+		display: flex;
+	}
+
+	/* Можно обойтись без JavaScript */
+	.popup-wrapper-3 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		font-size: 15px;
+		display: none;
+		background-color: rgba(0,0,0,0.5);
+	}
+
+	.popup-wrapper-3:target {
+		display: block;
+	}
+
+	.popup-3 {
+		width: 400px;
+		position: relative;
+		top: 50%;
+		margin: 0 auto;
+		transform: translateY(-50%);
+		border: 1px solid lightgreen;
+		background-color: white;
+	}
+	
+	/*Анимированный*/
+	.popup-wrapper-4 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		font-size: 15px;
+		display: none;
+		background-color: rgba(0,0,0,0.5);
+	}
+
+	.popup-4 {
+		width: 400px;
+		margin: 0 auto;
+		transform: translateY(-100%);
+		border: 1px solid lightgreen;
+		background-color: white;
+		transition: transform 0.5s;
+	}
+
+	.popup_visible-4 {
+		display: block;
+	}
+	/*Общие классы*/
+	.popup__header {
+		padding: 5px;
+		background-color: lightgreen;
+		text-align: center;
+	}
+
+	.popup__body {
+		padding: 5px;		
+	}
+
+	.popup__footer {
+		padding: 5px;
+	}
+
+	.popup__button-close {
+		color: red;
+		float: right;
+	}
+
+	.popup__button-close:before {
+		content: "X";
+		font-family: sans-serif;
+	}
+	</style>
+</head>
+<body>
+	<p>Привет, Яндекс!<br>Сегодня я покажу тебе свои всплывающие окна</p>
+	<p>Первый вариант с использованием вертикального выравнивания при помощи translateY</p>
+	<a href="#" data-popup="#popup-1">Click Me!</a>
+
+	<div class="popup-wrapper-1" id="popup-1">
+		<div class="popup-1">
+			<div class="popup__header">Popup header<a href="#" class="popup__button-close"></a></div>
+			<div class="popup__body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, qui ullam. Laboriosam eius accusantium officia, veniam saepe quia blanditiis! Est a at culpa maiores aspernatur voluptates saepe laudantium iure sequi voluptatem, aperiam nesciunt qui quisquam nostrum obcaecati nam laboriosam magni, cum dolor eaque temporibus. Nostrum eligendi et esse, omnis eos!</div>
+			<div class="popup__footer">Footer</div>
+		</div>
+	</div>
+
+	<p>Второй вариант с использованием вертикального выравнивания flexbox</p>
+	<a href="#" data-popup="#popup-2">Click Me!</a>
+
+	<div class="popup-wrapper-2" id="popup-2">
+		<div class="popup-2">
+			<div class="popup__header">Popup header<a href="#" class="popup__button-close"></a></div>
+			<div class="popup__body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, qui ullam. Laboriosam eius accusantium officia, veniam saepe quia blanditiis! Est a at culpa maiores aspernatur voluptates saepe laudantium iure sequi voluptatem, aperiam nesciunt qui quisquam nostrum obcaecati nam laboriosam magni, cum dolor eaque temporibus. Nostrum eligendi et esse, omnis eos!</div>
+			<div class="popup__footer">Footer</div>
+		</div>
+	</div>
+
+	<p>Третий вариант без использования JavaScript (выравнивание при помощи translateY) <br>
+	Из недостатков - влияние на историю браузера</p>
+	<a href="#popup-3">Click Me!</a>
+
+	<div class="popup-wrapper-3" id="popup-3">
+		<div class="popup-3">
+			<div class="popup__header">Popup header<a href="#" class="popup__button-close"></a></div>
+			<div class="popup__body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, qui ullam. Laboriosam eius accusantium officia, veniam saepe quia blanditiis! Est a at culpa maiores aspernatur voluptates saepe laudantium iure sequi voluptatem, aperiam nesciunt qui quisquam nostrum obcaecati nam laboriosam magni, cum dolor eaque temporibus. Nostrum eligendi et esse, omnis eos!</div>
+			<div class="popup__footer">Footer</div>
+		</div>
+	</div>
+
+	<p>Немного анимаций</p>
+	<a href="#" data-popup="#popup-4">Click Me!</a>
+
+	<div class="popup-wrapper-4" id="popup-4">
+		<div class="popup-4">
+			<div class="popup__header">Popup header<a href="#" class="popup__button-close"></a></div>
+			<div class="popup__body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, qui ullam. Laboriosam eius accusantium officia, veniam saepe quia blanditiis! Est a at culpa maiores aspernatur voluptates saepe laudantium iure sequi voluptatem, aperiam nesciunt qui quisquam nostrum obcaecati nam laboriosam magni, cum dolor eaque temporibus. Nostrum eligendi et esse, omnis eos!</div>
+			<div class="popup__footer">Footer</div>
+		</div>
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$('[data-popup="#popup-1"]').click(function(){
+		var popupId = $(this).data('popup');
+		var $popup = $(popupId)
+		$popup.addClass('popup_visible-1')
+		$(popupId + ' .popup__button-close').click(function() {
+			$popup.removeClass('popup_visible-1');
+		})
+	})
+
+	$('[data-popup="#popup-2"]').click(function(){
+		var popupId = $(this).data('popup');
+		var $popup = $(popupId)
+		$popup.addClass('popup_visible-2')
+		$(popupId + ' .popup__button-close').click(function() {
+			$popup.removeClass('popup_visible-2');
+		})
+	})
+
+	$('[data-popup="#popup-4"]').click(function(){
+		var popupId = $(this).data('popup');
+		var $popup = $(popupId)
+		$popup.addClass('popup_visible-4')
+
+		var $popupBody = $(popupId + ' .popup-4');
+		var windowHeight = $(window).height();
+		var popupHeight = $popupBody.height();
+		var popupTransform = (windowHeight - popupHeight) / 2;
+		$popupBody.css('transform', 'translateY(' + popupTransform + 'px)');
+
+		$(popupId + ' .popup__button-close').click(function() {
+			$popup.removeClass('popup_visible-4');
+			$popupBody.css('transform', '');
+		})
+	})
+
+	</script>
+</body>
+</html>
